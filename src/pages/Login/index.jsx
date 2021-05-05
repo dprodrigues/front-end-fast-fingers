@@ -1,5 +1,9 @@
+import styled from "styled-components";
+
+const LoginContainer = styled.div``;
+
 const Login = function () {
-    return <h1>test</h1>;
+    return <LoginContainer></LoginContainer>;
 };
 
 export default Login;
