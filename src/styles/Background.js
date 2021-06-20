@@ -36,7 +36,10 @@ const particlesParams = {
 const Background = () => (
     <>
         <BackgroundGlobalStyle />
-        <Particles params={particlesParams} />
+        <Particles
+            style={{ position: "fixed", top: 0, left: 0, zIndex: -1 }}
+            params={particlesParams}
+        />
     </>
 );
 
