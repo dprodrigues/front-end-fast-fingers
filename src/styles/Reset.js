@@ -4,6 +4,7 @@ const Reset = createGlobalStyle`
     * {
         border: 0;
         box-sizing: border-box;
+        font-family: "Rubik", sans-serif;
         margin: 0;
         padding: 0;
         vertical-align: baseline;
