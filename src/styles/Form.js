@@ -1,6 +1,10 @@
 import styled from "styled-components";
-
 import { Link as LinkRRD } from "react-router-dom";
+import {
+    Form as FormikForm,
+    Field as FormikField,
+    ErrorMessage as FormikErrorMessage,
+} from "formik";
 
 export const Title = styled.h3`
     color: var(--font-white);
@@ -19,7 +23,7 @@ export const Description = styled.p`
     text-align: center;
 `;
 
-export const Form = styled.form`
+export const Form = styled(FormikForm)`
     min-width: 372px;
     width: 100%;
 
@@ -37,7 +41,7 @@ export const Label = styled.label`
     text-transform: uppercase;
 `;
 
-export const Input = styled.input`
+export const Field = styled(FormikField)`
     background: var(--bg-medium);
     border-radius: 4px;
     color: var(--font-white);
@@ -49,7 +53,7 @@ export const Input = styled.input`
     width: 100%;
 `;
 
-export const ErrorMessage = styled.p`
+export const ErrorMessage = styled(FormikErrorMessage)`
     color: var(--color-error);
     font-size: 12px;
     line-height: 14px;
