@@ -10,7 +10,7 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <GeneralProvider>
-                <Route component={Home} path="/" />
+                <Route component={Home} path="/" exact />
                 <Route component={Login} path="/login" />
                 <Route component={Register} path="/register" />
             </GeneralProvider>
