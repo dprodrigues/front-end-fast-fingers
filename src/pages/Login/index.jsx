@@ -14,6 +14,7 @@ import {
     SubmitButton,
     ErrorMessage,
     Form,
+    Label,
     Field,
 } from "../../styles/Form";
 
@@ -105,15 +106,15 @@ const Login = () => {
                     validationSchema={schema}
                 >
                     <Form>
-                        <Field type="email" name="email" placeholder="Email" />
+                        <Label htmlFor="email">E-mail</Label>
+
+                        <Field id="email" type="email" name="email" />
 
                         <ErrorMessage component="p" name="email" />
 
-                        <Field
-                            type="password"
-                            name="password"
-                            placeholder="Senha"
-                        />
+                        <Label htmlFor="password">Senha</Label>
+
+                        <Field id="password" type="password" name="password" />
 
                         <ErrorMessage component="p" name="password" />
 
