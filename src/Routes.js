@@ -1,13 +1,21 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+
+import { GeneralProvider } from "./context/General";
 
 const Routes = () => (
-    <Router>
+    <BrowserRouter>
         <Switch>
-            <Route component={Login} path="/login" />
+            <GeneralProvider>
+                <Route component={Home} path="/" />
+                <Route component={Login} path="/login" />
+                <Route component={Register} path="/register" />
+            </GeneralProvider>
         </Switch>
-    </Router>
+    </BrowserRouter>
 );
 
 export default Routes;
