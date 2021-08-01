@@ -4,16 +4,12 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-import { GeneralProvider } from "./context/General";
-
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <GeneralProvider>
-                <Route component={Home} path="/" exact />
-                <Route component={Login} path="/login" />
-                <Route component={Register} path="/register" />
-            </GeneralProvider>
+            <Route component={Home} path="/" exact />
+            <Route component={Login} path="/login" />
+            <Route component={Register} path="/register" />
         </Switch>
     </BrowserRouter>
 );
