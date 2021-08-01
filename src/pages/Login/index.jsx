@@ -21,7 +21,7 @@ import {
 const Login = () => {
     const [hasTriedToLogin, setHasTriedToLogin] = useState(false);
     const { state, dispatch } = useGeneral();
-    const loggedIn = state.loggedIn;
+    const { loggedIn } = state;
 
     const schema = yup.object().shape({
         email: yup.string().email("Email inválido."),
@@ -47,18 +47,28 @@ const Login = () => {
 
     const handleFormSubmit = (values, { setSubmitting, setErrors }) => {
         try {
-            // TODO
-            // implement a user validation when the application has a back-end
+            // TODO: implement a user validation when the application has a back-end
+
+            setSubmitting(true);
 
             const loggedIn = true;
-            const user = values.email.split("@")[0];
 
-            setSubmitting(loggedIn);
+            let user = JSON.parse(window.localStorage.getItem("@ffff:user"));
 
-            window.localStorage.setItem(
-                "@:ffff-user",
-                JSON.stringify({ user, loggedIn })
-            );
+            if (user) {
+                window.localStorage.removeItem("@ffff:user");
+
+                user.loggedIn = true;
+            } else {
+                const username = values.email.split("@")[0];
+
+                user = {
+                    username,
+                    loggedIn,
+                };
+            }
+
+            window.localStorage.setItem("@ffff:user", JSON.stringify(user));
 
             setTimeout(() => {
                 setLoggedIn(loggedIn);
@@ -84,14 +94,14 @@ const Login = () => {
     }, []);
 
     useEffect(() => {
-        const localStorageUser = window.localStorage.getItem("@:ffff-user");
+        const localStorageUser = window.localStorage.getItem("@ffff-user");
 
         if (localStorageUser && !loggedIn) setLoggedIn(true);
     });
 
-    return loggedIn ? (
-        <Redirect to="/" />
-    ) : (
+    if (loggedIn) return <Redirect to="/" />;
+
+    return (
         <Container>
             <Modal>
                 <Title>Seja bem vindo! :D</Title>
