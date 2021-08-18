@@ -27,7 +27,7 @@ const reducer = (state, action) => {
 const Context = createContext(undefined);
 
 const GeneralProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, initialState, null);
+    const [state, dispatch] = useReducer(reducer, initialState, undefined);
 
     return (
         <Context.Provider value={{ state, dispatch }}>
