@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -18,7 +18,7 @@ import {
 const Register = () => {
     const [canRedirect, setCanRedirect] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
-    const [registred, setRegistred] = useState(false);
+    const [registered, setRegistered] = useState(false);
 
     const initialValues = {
         username: "",
@@ -62,7 +62,7 @@ const Register = () => {
                 })
             );
 
-            setRegistred(true);
+            setRegistered(true);
         } catch (error) {
             // TODO: implement handle error
             console.log(error);
@@ -76,12 +76,12 @@ const Register = () => {
 
         if (user) {
             setLoggedIn(user?.loggedIn);
-            setRegistred(true);
+            setRegistered(true);
             setCanRedirect(true);
         }
-    }, [registred]);
+    }, [registered]);
 
-    if (canRedirect && registred)
+    if (canRedirect && registered)
         return loggedIn ? <Redirect to="/" /> : <Redirect to="/login" />;
 
     return (
